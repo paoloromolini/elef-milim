@@ -1,0 +1,8 @@
+{% extends 'questions/base.html' %}
+{% block content %}
+<ul class="list">
+    {% for lesson in object_list %}
+       <a href="{{ lesson.get_absolute_url }}"> {{ lesson }}</a>
+    {% endfor %}
+</ul>
+{% endblock %}
