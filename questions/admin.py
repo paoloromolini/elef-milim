@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Lesson, Question
 
-class QuestionInline(admin.StackedInline):
+class QuestionInline(admin.TabularInline):
     model = Question
 
 class LessonAdmin(admin.ModelAdmin):

@@ -31,5 +31,4 @@ class Question(models.Model):
 
     @property
     def correct_answers_list(self):
-        print(self.correct_answers.split(','))
         return self.correct_answers.split(',')
