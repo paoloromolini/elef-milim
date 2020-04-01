@@ -1,8 +1,13 @@
 {% extends 'questions/base.html' %}
+{% load static %}
 {% block content %}
 <div class="col-sm">
     <h1>{{ object }}</h1>
-
+  <div class="alert alert-success hide" id="success">
+    <strong>Complimenti!</strong> Hai riposto a tutte le domande.
+  </div>
+   <div class="alert alert-danger hide" id="result">
+  </div>
     {% comment %}
     <audio controls width="100%">
     <source src="{{ object.audio_link }}" type="audio/mpeg">
@@ -18,7 +23,7 @@
             <label class="col-6" for="q{{ question.pk}}">
                 {{question.text }}
                 &nbsp;
-                <a href="https://forvo.com/search/{{question.text}}/he/" target="_blank">
+                <a href="https://forvo.com/search/{{question.text}}/he/" target="_blank" tabindex="-1">
                     <i class="fa fa-volume-up"></i>
                 </a>
             </label>
@@ -44,14 +49,11 @@
         </div>
     </form>
 </div>
-<div class="row">
-    <strong id="result"></strong>
-</div>
+
 {% endblock %}
 
 {% block js %}
 <script>
-
 dict = {
     {% for question in object.question_set.all %}
     'q{{ question.pk }}': {
@@ -61,34 +63,7 @@ dict = {
     {% endfor %}
 }
 
-let questions_count = {{ object.question_set.all|length }};
-let correct_answsers = 0;
-let result = $('#result');
-
-$('#submit').on('click', function(event){
-    event.preventDefault();
-    correct_answsers = 0;
-    $( ".question" ).each(function() {
-        let id = $(this).attr('id');
-        let answer = $( this ).val().toLowerCase();
-        let correctAnswers = dict[id]['correct'];
-        let correctGender = dict[id]['gender'];
-        let gender_input = 'gender-' + id;
-        genderIsCorrect = true;
-        console.log(correctGender);
-        if (correctGender != 'None') {
-            genderIsCorrect = $("input[name="+gender_input+"]:checked"). val() == correctGender;
-        }
-        if (correctAnswers.indexOf(answer) >= 0 && genderIsCorrect) {
-            $(this).removeClass('border-danger');
-            $(this).addClass('border-success');
-            correct_answsers++;
-        } else {
-            $(this).removeClass('border-success');
-            $(this).addClass('border-danger');
-        };
-    });
-    result.html(correct_answsers + '/' + questions_count + ' risposte corrette.');
-});
+var questions_count = {{ object.question_set.all|length }};
 </script>
+<script src="{% static 'js/lesson.js' %}"></script>
 {% endblock %}

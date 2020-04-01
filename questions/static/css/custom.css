@@ -1,0 +1,29 @@
+body {
+}
+
+.navbar {
+    background-color: forestgreen;
+}
+
+.navbar .navbar-brand {
+    color: darkorange;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+a {
+    color: darkorange;
+}
+
+.btn-primary {
+    background-color: darkorange;
+    border-color: coral;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
+    background-color: orange;
+    border-color: darkorange;
+}
+.hide {
+    display: none;
+}
