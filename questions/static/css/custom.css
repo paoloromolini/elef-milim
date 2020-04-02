@@ -27,3 +27,7 @@ a {
 .hide {
     display: none;
 }
+
+.form-group input {
+    border-width: 2px;
+}

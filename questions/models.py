@@ -20,7 +20,7 @@ class Question(models.Model):
         ('f', 'female'),
     )
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
-    text = models.TextField()
+    text = models.CharField(max_length=256)
     correct_answers = models.CharField(max_length=250, help_text="List separated by comma")
     css_class = models.CharField(max_length=250, blank=True, null=True)
     position = models.CharField(max_length=250, blank=True, null=True)
