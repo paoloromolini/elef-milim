@@ -1,9 +1,10 @@
 {% extends 'questions/base.html' %}
 {% block content %}
 <div class="row">
-    <ul class="list-group">
+    <ul class="list-group navbar-nav ">
         {% for lesson in object_list %}
-           <a href="{{ lesson.get_absolute_url }}"> {{ lesson }}</a>
+	<li class="nav-item"> 
+           <a class="nav-link" href="{{ lesson.get_absolute_url }}"> {{ lesson }}</a>
         {% endfor %}
     </ul>
 </div>

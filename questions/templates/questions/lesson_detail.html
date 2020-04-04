@@ -19,7 +19,7 @@
 
     <form class="form-inline">
         {% for question in object.question_set.all %}
-        <div class="form-group col-4 p-3">
+        <div class="form-group col-lg-4 col-sm-12 p-3">
             <label class="col-6" for="q{{ question.pk}}">
                 {{question.text }}
                 &nbsp;
