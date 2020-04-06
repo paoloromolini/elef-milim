@@ -11,7 +11,6 @@ $('#submit').on('click', function(event){
         let correctGender = dict[id]['gender'];
         let gender_input = 'gender-' + id;
         genderIsCorrect = true;
-        console.log(correctGender);
         if (correctGender != 'None') {
             genderIsCorrect = $("input[name="+gender_input+"]:checked"). val() == correctGender;
         }
@@ -33,4 +32,13 @@ $('#submit').on('click', function(event){
         result.show();
         result.html('<strong>Attenzione: </strong>' + correct_answsers + '/' + questions_count + ' risposte corrette.');
     }
+});
+$('#help').on('click', function(event){
+    event.preventDefault();
+    $( ".question" ).each(function() {
+        let that = $(this);
+        let id = that.attr('id');
+        let hintA = dict[id]['correct']+'';
+        that.val(hintA.split(',')[0]);
+    });
 });

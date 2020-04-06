@@ -2,11 +2,16 @@
 {% load static %}
 {% block content %}
 <div class="col-sm">
-    <h1>{{ object }}</h1>
+   <h1>
+       {{ object }}
+       <button id="help" class="btn btn-default pull-right text-danger h2">
+           <i class="fa fa-life-ring"></i>
+       </button>
+   </h1>
   <div class="alert alert-success hide" id="success">
-    <strong>Complimenti!</strong> Hai riposto a tutte le domande.
+     <strong>Complimenti!</strong> Hai riposto a tutte le domande.
   </div>
-   <div class="alert alert-danger hide" id="result">
+  <div class="alert alert-danger hide" id="result">
   </div>
     {% comment %}
     <audio controls width="100%">
